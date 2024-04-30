@@ -35,8 +35,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=sfarhi-ynov-backend -Dsonar.projectName=sfarhi-ynov-backend
-      - name : install dependencies
-        run: mvn clean install
-      - name: Run tests with coverage
-        run: mvn test
+        run:
+          mvn -B clean verify -Pcoverage
+          mvn -B sonar:sonar -Dsonar.projectKey=sfarhi-ynov-backend -Dsonar.projectName=sfarhi-ynov-backend -Dsonar.coverage.jacoco.xmlReportPaths=${{ github.workspace }}/target/coverage-reports/jacoco.xml
