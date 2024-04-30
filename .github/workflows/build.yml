@@ -38,3 +38,5 @@ jobs:
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=sfarhi-ynov-backend -Dsonar.projectName=sfarhi-ynov-backend
       - name : install dependencies
         run: mvn clean install
+      - name: Run tests with coverage
+        run: mvn test
