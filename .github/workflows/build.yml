@@ -37,4 +37,4 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=sfarhi-ynov-backend -Dsonar.projectName=sfarhi-ynov-backend
       - name : install dependencies
-        run: mvn install
+        run: mvn clean install
